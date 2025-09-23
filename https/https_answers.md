@@ -1,5 +1,7 @@
 HTTPS ANALYSIS:
+
 For the HTTPS based website access, answer the following:
+
 a. What is the name of website?
 www.wikipedia.org
 
@@ -11,6 +13,7 @@ The ClientHello message for www.wikipedia.org is in Packet #337 (Time: 21.247093
 ---
 
 c. List all the TLS extensions included in the ClientHello.  
+
  Extracted Extensions List
 
 1. Reserved (GREASE) (len=0)
@@ -42,21 +45,29 @@ d. Identify the ServerHello message. What cipher suite is chosen by the server?
 
 ---
 
-e. Locate the Certificate message. Extract the server’s certificate information (issuer, subject, validity dates).
+e. Locate the Certificate message. Extract the server’s certificate information (issuer, subject, validity dates)?
+
 • Packet : #340 (Server Hello for TLS 1.2)
+
 • Handshake Type: Server Hello / Certificate (encrypted in TLS 1.2)
+
 • TLS Version: 1.2
+
 • Cipher Suite: TLS_AES_128_GCM_SHA256
+
 Reason certificate details are not visible:
+
 The certificate and application data appear encrypted because TLS uses session keys derived during the handshake. Without these keys, Wireshark cannot decrypt the messages. In TLS 1.3, certificates are always encrypted for privacy, and in TLS 1.2, ephemeral key exchanges (DHE/ECDHE) can also cause the certificate to be encrypted. Similarly, all HTTP traffic is encrypted after the handshake to ensure confidentiality and prevent eavesdropping.
 
 ---
 
 f. After the TLS handshake, identify the first encrypted application data packet. Why can’t you directly see the HTTP headers in this packet?
+
 The first Application Data packet (Content Type = 23, e.g., Packet #01) appears immediately after the TLS handshake is complete.
 This packet carries the encrypted HTTP request/response.
 
 Reason headers are hidden:
+
 All HTTP traffic is encrypted after the TLS 1.2 handshake. Without the session keys, Wireshark cannot decrypt the packet, so the HTTP headers and content are not visible.
 
 ---
