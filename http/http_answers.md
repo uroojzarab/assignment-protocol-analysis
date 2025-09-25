@@ -9,44 +9,36 @@ The name of the website, as shown in the **Host** field of the GET request, is:
 ---
 
 ### 2. Find the packet that contains the first GET request for the website you have accessed.
+The first get request is in frame #257
 
-The first GET request found in the trace is:
-GET /basic-auth/user/passwd HTTP/1.1
-Host: httpbin.org
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ...
-Sec-Purpose: prefetch;prerender
-Purpose: prefetch
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate
-Accept-Language: en-US,en;q=0.9
 
 ---
 
 ### 3.Describe all headers and their values in this GET request message.
 
 # Headers:
+Host: httpbin.org
 
-- **Host:** httpbin.org → The target server.
-- **Connection:** keep-alive → Client requests a persistent connection.
-- **Upgrade-Insecure-Requests:** 1 → Browser prefers secure resources if possible.
-- **User-Agent:** Mozilla/5.0 … → Identifies the browser and operating system.
-- **Sec-Purpose:** prefetch;prerender → Request was preloaded.
-- **Purpose:** prefetch → Confirms prefetching.
-- **Accept:** Lists acceptable content types.
-- **Accept-Encoding:** gzip, deflate → Supported compression formats.
-- **Accept-Language:** en-US,en;q=0.9 → Preferred languages.
+Connection: keep-alive
+
+DNT: 1
+
+Upgrade-Insecure-Requests: 1
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Avast/131.0.0.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+Accept-Encoding: gzip, deflate
+
+Accept-Language: en-US,en;q=0.9
 
 ---
 
 ### 4.4. Identify the status code in the first server response.
 
 # Status Code in First Server Response
-
-The status code in the first server response is:
-
-**401 Unauthorized**
+The first response  at Frame #377 has Status Code: 200 OK.
 
 ---
 
@@ -54,12 +46,11 @@ The status code in the first server response is:
 
 # Total HTTP Response Messages
 
-There are **4 HTTP response messages** exchanged in total:
+There are ** 2 HTTP response messages** exchanged in total:
+at frame no
+#377
+#572
 
-1. 401 Unauthorized
-2. 401 Unauthorized
-3. 200 OK
-4. 404 Not Found
 
 ---
 
